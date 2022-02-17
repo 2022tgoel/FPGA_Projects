@@ -24,5 +24,5 @@ begin
         wait for 60 ns; -- 3 clock cycles
     end process;
 
-    RESET <= '0', '1' after 80 ns, '0' after 120 ns;     
+    RESET <= '0', '1' after 80 ns, '0' after 120 ns, '1' after 600 ns, '0' after 650 ns;     
 end tb ;

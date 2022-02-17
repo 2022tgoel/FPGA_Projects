@@ -9,7 +9,7 @@ entity color_fsm is
 end color_fsm;
 
 architecture Behavioral of color_fsm is
-	signal state : STD_LOGIC_VECTOR (1 downto 0);
+	signal state : STD_LOGIC_VECTOR (1 downto 0) := "00";
 begin
 	process(CLK, RESET, X)
 	begin
@@ -23,3 +23,4 @@ begin
 	end process;
 	S <= state;
 end Behavioral;
+
