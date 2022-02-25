@@ -16,9 +16,9 @@ end modulo_800_counter;
 architecture Behavioral of modulo_800_counter is
 	signal COUNT : integer range 0 to 1000 := 0;
 begin
-    process (CLK, RESET, CE)
+    process (CLK, RESET, CE, COUNT)
     begin
-    	if (RESET = '0') then
+    	if (RESET = '1') then
     		COUNT <= 0;
         elsif (rising_edge(CLK) and CE='1') then
             COUNT <= COUNT + 1;
@@ -45,9 +45,9 @@ end modulo_520_counter;
 architecture Behavioral of modulo_520_counter is
 	signal COUNT : integer range 0 to 1000 := 0;
 begin
-    process (CLK, RESET, CE)
+    process (CLK, RESET, CE, COUNT)
     begin
-    	if (RESET = '0') then
+    	if (RESET = '1') then
     		COUNT <= 0;
         elsif (rising_edge(CLK) and CE='1') then
             COUNT <= COUNT + 1;
@@ -67,7 +67,7 @@ entity vga_controller is
   	PORT (CLK : in STD_LOGIC;
 		  RESET : in STD_LOGIC;
 		  hcount, vcount : out STD_LOGIC_VECTOR (9 downto 0);
-		  HSYNC, VSYNC, BLANK_Z : out STD_LOGIC);
+		  HSYNC, VSYNC : out STD_LOGIC);
 end vga_controller;
 
 architecture Structural of vga_controller is
@@ -87,5 +87,4 @@ begin
 	vcount <= vc_signal;
 	HSYNC <= '1' when (hc >= 656 and hc < 752) else '0';
 	VSYNC <= '1' when (vc >= 489 and vc < 491) else '0';
-	BLANK_Z <= '1' when (hc < 640 and vc < 480) else '0';
 end Structural;
