@@ -8,11 +8,12 @@ end vga_top_tb;
 
 architecture tb of vga_top_tb is
     signal X, CLK, RESET : STD_LOGIC := '0';
+    signal VGA_R, VGA_B, VGA_G : STD_LOGIC_VECTOR (3 downto 0);
     signal VGA_HSYNC, VGA_VSYNC : STD_LOGIC;
     signal DISPLAY_ANODE : STD_LOGIC;
     signal DISPLAY_CATHODE : STD_LOGIC_VECTOR (6 downto 0);
 begin
-    MODULE : entity work.vga_top_level port map (X => X, CLK => CLK, RESET => RESET, VGA_HSYNC => VGA_HSYNC, VGA_VSYNC => VGA_VSYNC,
+    MODULE : entity work.vga_top_level port map (X => X, CLK => CLK, RESET => RESET, VGA_R => VGA_R, VGA_B => VGA_B, VGA_G => VGA_G, VGA_HSYNC => VGA_HSYNC, VGA_VSYNC => VGA_VSYNC,
                                                 DISPLAY_CATHODE => DISPLAY_CATHODE, DISPLAY_ANODE => DISPLAY_ANODE);
 
     process

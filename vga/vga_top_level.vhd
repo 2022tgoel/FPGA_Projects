@@ -23,9 +23,10 @@ begin
 										  HSYNC => VGA_HSYNC, VSYNC => VGA_VSYNC);
 	hc <= conv_integer(hcount);
 	vc <= conv_integer(vcount);
-	VGA_R <= "1111" when (S = "00" or (S = "11" and (vc < 120 or vc >= 360))) else "0000";
-	VGA_G <= "1111" when (S = "01" or (S = "11" and ((vc >= 120 and vc < 240) or vc >= 360))) else "0000";
-	VGA_B <= "1111" when (S = "10" or (S = "11" and (vc >= 240))) else "0000";
-
+	
+    VGA_R <=  "1111" when (hc < 640 and vc < 480) and (S = "00" or (S = "11" and (vc < 120 or vc >= 360))) else "0000";
+	VGA_G <= "1111" when (hc < 640 and vc < 480) and (S = "01" or (S = "11" and ((vc >= 120 and vc < 240) or vc >= 360))) else "0000";
+	VGA_B <= "1111" when (hc < 640 and vc < 480) and (S = "10" or (S = "11" and (vc >= 240))) else "0000";
+	
 	DISPLAY_ANODE <= '0';
 end Structural;	
